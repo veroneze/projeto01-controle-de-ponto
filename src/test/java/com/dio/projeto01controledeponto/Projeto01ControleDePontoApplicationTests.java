@@ -10,4 +10,7 @@ class Projeto01ControleDePontoApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void name() {
+	}
 }

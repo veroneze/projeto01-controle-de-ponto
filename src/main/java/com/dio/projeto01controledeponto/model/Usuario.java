@@ -1,5 +1,6 @@
 package com.dio.projeto01controledeponto.model;
 import lombok.*;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -9,20 +10,21 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @Builder
 @Entity
+@Audited
 public class Usuario {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.PERSIST)
     private CategoriaUsuario categoriaUsuario;
     private String nome;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.PERSIST)
     private Empresa empresa;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.PERSIST)
     private NivelAcesso nivelAcesso;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.PERSIST)
     private JornadaTrabalho jornadaTrabalho;
     private BigDecimal tolerancia;
     private LocalDateTime inicioJornada;
